@@ -29,6 +29,35 @@
 2. Использовать image - gcr.io/kubernetes-e2e-test-images/echoserver:2.2.
 3. Подключиться локально к Pod с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
 
+### Решение:
+
+     1) Создаем файл конфигурации
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+spec:
+  containers:
+  - name: hello-world
+    image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+    ports:
+    - containerPort: 8080
+```
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_001.png)
+
+     2) Далее, сделаем port-forward
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_002.png)
+
+     3) Через дашборд видим наш созданный под hello-world
+
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_003.png)
+
+
 ------
 
 ### Задание 2. Создать Service и подключить его к Pod
@@ -37,6 +66,56 @@
 2. Использовать image — gcr.io/kubernetes-e2e-test-images/echoserver:2.2.
 3. Создать Service с именем netology-svc и подключить к netology-web.
 4. Подключиться локально к Service с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
+
+### Решение:
+
+     1) Создаем POD netology-web
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: netology-web
+  labels:
+    app: netology
+spec:
+  containers:
+  - name: netology-web
+    image: gcr.io/kubernetes-e2e-test-images/echoserver:2.2
+```
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_004.png)
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_005.png)
+
+     2) Создадаем сервис netology-svc, и через селектор netology подключаем к нему наш под web-netology
+
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  name: netology-svc
+spec:
+  ports:
+    - name: web
+      port: 8080
+  selector:
+    app: netology
+```
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_006.png)
+
+     3) В дашборде управления увидим наш работающий сервис
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_007.png)
+
+     4) Далее, запустим порт-форвард сервиса
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_008.png)
+
+     5) Через curl проверяем наш pod
+
+![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_009.png)
 
 ------
 

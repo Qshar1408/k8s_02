@@ -31,7 +31,7 @@
 
 ### Решение:
 
-1)Создаем файл конфигурации
+##### 1) Создаем файл конфигурации
 
 ```bash
 apiVersion: v1
@@ -48,11 +48,11 @@ spec:
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_001.png)
 
-2)Далее, сделаем port-forward
+##### 2) Далее, сделаем port-forward
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_002.png)
 
-3)Через дашборд видим наш созданный под hello-world
+##### 3) Через дашборд видим наш созданный под hello-world
 
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_003.png)
@@ -69,7 +69,7 @@ spec:
 
 ### Решение:
 
-1)Создаем POD netology-web
+##### 1) Создаем POD netology-web
 
 ```bash
 apiVersion: v1
@@ -88,7 +88,7 @@ spec:
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_005.png)
 
-2)Создадаем сервис netology-svc, и через селектор netology подключаем к нему наш под web-netology
+##### 2) Создадаем сервис netology-svc, и через селектор netology подключаем к нему наш под web-netology
 
 ```bash
 apiVersion: v1
@@ -105,15 +105,15 @@ spec:
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_006.png)
 
-3)В дашборде управления увидим наш работающий сервис
+##### 3) В дашборде управления увидим наш работающий сервис
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_007.png)
 
-4)Далее, запустим порт-форвард сервиса
+##### 4) Далее, запустим порт-форвард сервиса
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_008.png)
 
-5)Через curl проверяем наш pod
+##### 5) Через curl проверяем наш pod
 
 ![k8s_02](https://github.com/Qshar1408/k8s_02/blob/main/img/k8s_02_009.png)
 
